@@ -25,6 +25,18 @@ namespace WebApiRegular
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            //------------content negotiation---------------------------------------//
+           
+            //Return only json  : remove xml
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+             
+                //change formaters json : indented
+             // config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+             
+            //change to camel case
+            //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+
         }
     }
 }

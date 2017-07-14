@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 
 namespace WebApiRegular.Models
 {
@@ -20,6 +21,8 @@ namespace WebApiRegular.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //this allows entity framework to see the Music domain model
+        public DbSet<Employees> EmployeeDB { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
