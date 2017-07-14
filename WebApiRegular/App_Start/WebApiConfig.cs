@@ -26,7 +26,7 @@ namespace WebApiRegular
                 defaults: new { id = RouteParameter.Optional }
             );
             //------------content negotiation---------------------------------------//
-           
+
             //Return only json  : remove xml
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
@@ -35,6 +35,10 @@ namespace WebApiRegular
 
             //change to camel case
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            //only return json in browsers but anything in fiddler :
+           // config.Formatters.JsonFormatter.SupportedMediaTypes
+             //   .Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
 
 
         }
